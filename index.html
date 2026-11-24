@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+  <title>VIBE MUSIC</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="logo">VIBE<span> MUSIC</span></div>
+
+    <nav>
+      <button class="nav-btn active" data-page="inicio">⌂ Início</button>
+      <button class="nav-btn" data-page="buscar">⌕ Buscar</button>
+      <button class="nav-btn" data-page="biblioteca">▤ Sua biblioteca</button>
+      <button class="nav-btn" data-page="favoritas">♥ Curtidas</button>
+    </nav>
+
+    <div class="sidebar-line"></div>
+    <p class="side-title">SUAS PLAYLISTS</p>
+
+    <button class="playlist-link" data-page="playlist">＋ Minha playlist</button>
+    <button class="playlist-link" data-page="rap">♫ Rap e Trap</button>
+    <button class="playlist-link" data-page="sertanejo">♫ Sertanejo</button>
+
+    <div class="upload-area">
+      <p>Adicione suas músicas</p>
+      <label for="uploadMusic" class="upload-btn">
+        ＋ Importar músicas
+      </label>
+      <input type="file" id="uploadMusic" accept="audio/*" multiple hidden>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div class="history-buttons">
+        <button onclick="history.back()">‹</button>
+        <button onclick="history.forward()">›</button>
+      </div>
+
+      <div class="profile">
+        <span>♪</span> VIBE USER
+      </div>
+    </header>
+
+    <section class="welcome">
+      <p class="eyebrow">SUA MÚSICA, SEU MOMENTO</p>
+      <h1>O som que combina<br>com sua <span>vibe.</span></h1>
+      <p>Descubra músicas, artistas e playlists.</p>
+    </section>
+
+    <section class="search-section" id="searchSection">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="⌕  O que você quer ouvir?"
+      >
+    </section>
+
+    <section class="content-section">
+      <div class="section-heading">
+        <h2 id="sectionTitle">Escolha sua vibe</h2>
+      </div>
+
+      <div class="categories">
+        <button class="category active" data-filter="todos">Todos</button>
+        <button class="category" data-filter="rap">Rap</button>
+        <button class="category" data-filter="trap">Trap</button>
+        <button class="category" data-filter="sertanejo">Sertanejo</button>
+        <button class="category" data-filter="funk">Funk</button>
+      </div>
+
+      <div class="featured-grid">
+        <div class="featured-card" data-filter-card="rap">
+          <div class="featured-image rap-image">🎤</div>
+          <div>
+            <h3>Rap Nacional</h3>
+            <p>O melhor do rap brasileiro</p>
+          </div>
+        </div>
+
+        <div class="featured-card" data-filter-card="trap">
+          <div class="featured-image trap-image">🔥</div>
+          <div>
+            <h3>Trap Hits</h3>
+            <p>Entre no clima</p>
+          </div>
+        </div>
+
+        <div class="featured-card" data-filter-card="sertanejo">
+          <div class="featured-image sert-image">🤠</div>
+          <div>
+            <h3>Sertanejo</h3>
+            <p>Pra cantar junto</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-heading">
+        <h2 id="musicTitle">Músicas para você</h2>
+        <span id="musicCount"></span>
+      </div>
+
+      <div class="music-header">
+        <span>#</span>
+        <span>TÍTULO</span>
+        <span>ARTISTA</span>
+        <span>GÊNERO</span>
+        <span>♡</span>
+      </div>
+
+      <div id="musicList" class="music-list"></div>
+    </section>
+
+  </main>
+
+  <footer class="player">
+
+    <div class="now-playing">
+      <div class="cover" id="currentCover">♫</div>
+      <div class="track-info">
+        <strong id="currentTitle">Escolha uma música</strong>
+        <span id="currentArtist">Sua próxima vibe começa aqui</span>
+      </div>
+      <button id="likeCurrent" class="heart-btn">♡</button>
+    </div>
+
+    <div class="player-center">
+      <div class="controls">
+        <button id="shuffleBtn" title="Aleatório">⤨</button>
+        <button id="prevBtn" title="Anterior">|◀</button>
+        <button id="playBtn" class="play-btn" title="Reproduzir">▶</button>
+        <button id="nextBtn" title="Próxima">▶|</button>
+        <button id="repeatBtn" title="Repetir">↻</button>
+      </div>
+
+      <div class="progress-area">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progress" min="0" max="100" value="0">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="volume-area">
+      <span>♫</span>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.7">
+    </div>
+
+  </footer>
+
+</div>
+
+<audio id="audio"></audio>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
